@@ -61,7 +61,17 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Others --
+-- LSP --
+keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
+keymap("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts)
+keymap("n", "<leaded>a", ":lua vim.lsp.buf.code_action()<cr>", opts)
+keymap("n", "<leader>C", ":lua vim.diagnostic.open_float()<cr>", opts)
+keymap("n", "<S-k>", ":lua vim.lsp.buf.hover()<cr>", opts)
+
+-- DAP --
+keymap("n", "<F5>", ":FlutterRun<cr>", opts)
+keymap("n", "<leader><F4>", ":lua require'dap'.toggle_breakpoint()<cr>", opts)
+keymap("v", "<M-k>", ":lua require("dapui").eval()<CR>", opts)
 
 -- Terminal --
 -- Better terminal navigation

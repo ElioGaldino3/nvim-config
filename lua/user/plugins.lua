@@ -92,6 +92,14 @@ return packer.startup(function(use)
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
+
+	--Debugging
+    use({ "mfussenegger/nvim-dap",})
+	use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+
+	-- Flutter
+	use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

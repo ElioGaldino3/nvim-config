@@ -181,6 +181,22 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+
+  F = {
+    name = "Flutter",
+      c = { ":FlutterCopyProfilerUrl<CR>", "Copy Profile Url" },
+      d = { ":FlutterDevices<CR>", "Devices" },
+      D = { ":FlutterDevTools<CR>", "Dev Tools" },
+      e = { ":FlutterEmulators<CR>", "Emulators" },
+      h = { ":FlutterReload<CR>", "Reload" },
+      H = { ":FlutterRestart<CR>", "Restart" },
+      l = { ":FlutterLogClear<CR>", "Log Clear" },
+      o = { ":Flutterlvimutline<CR>", "lvimutline" },
+      p = { ":FlutterPubGet<CR>", "Pub Get" },
+      q = { ":FlutterQuit<CR>", "Quit" },
+      r = { ":FlutterRun<CR>", "Run" },
+      v = { ":FlutterVisualDebug<CR>", "Visual Debug" },
+  }
 }
 
 which_key.setup(setup)
