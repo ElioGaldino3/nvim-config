@@ -8,5 +8,5 @@ LspInstall angularls cssls cssmodules_ls dartls dockerls eslint elixirls erlangl
 ```
 
 ```
-TSInstall css dart elixir erlang graphql html javascript json json5 lua mardown markdown_inline prisma python ruby rust scss sql typescript vim yaml
+TSInstall css dart elixir erlang graphql html javascript json json5 lua markdown markdown_inline prisma python ruby rust scss sql typescript vim yaml
 ```
