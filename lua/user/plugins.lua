@@ -52,17 +52,13 @@ return packer.startup(function(use)
 	use({ "akinsho/bufferline.nvim",  })
 	use({ "moll/vim-bbye",  })
 	use({ "nvim-lualine/lualine.nvim",  })
-	use({ "akinsho/toggleterm.nvim",  })
-	use({ "ahmedkhalf/project.nvim",  })
 	use({ "lewis6991/impatient.nvim",  })
-	use({ "lukas-reineke/indent-blankline.nvim",  })
 	use({ "goolord/alpha-nvim",  })
 	use("folke/which-key.nvim")
 
 	-- Colorschemes
-	use({ "folke/tokyonight.nvim",  })
-	use("lunarvim/darkplus.nvim")
-  use("Shatur/neovim-ayu")
+    use("Shatur/neovim-ayu")
+    use({ 'xiyaowong/nvim-transparent', })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp",  }) -- The completion plugin
@@ -74,7 +70,6 @@ return packer.startup(function(use)
 
 	-- snippets
 	use({ "L3MON4D3/LuaSnip",  }) --snippet engine
-	use({ "rafamadriz/friendly-snippets",  }) -- a bunch of snippets to use
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig",  }) -- enable LSP
@@ -90,17 +85,16 @@ return packer.startup(function(use)
 	-- Git
 	use({ "lewis6991/gitsigns.nvim", })
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
-
 	--Debugging
     use({ "mfussenegger/nvim-dap",})
 	use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
-	-- Flutter
-	use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+    -- Navigation
+    use({ 'phaazon/hop.nvim', })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
 end)
+
+

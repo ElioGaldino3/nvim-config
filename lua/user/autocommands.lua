@@ -35,3 +35,28 @@ vim.cmd [[
 --   autocmd!
 --   autocmd BufWritePre * lua vim.lsp.buf.formatting()
 -- augroup end
+
+vim.api.nvim_create_autocmd("BufWrite", {
+  pattern = { "*.dart" },
+  -- enable wrap mode for json files only
+  command = "lua vim.lsp.buf.code_action({apply = true, filter = function(action) return action.title == 'Fix All' end})",
+})
+
+vim.api.nvim_create_autocmd("BufWrite", {
+  pattern = { "*.dart" },
+  -- enable wrap mode for json files only
+  command = "lua vim.lsp.buf.format{async=true}",
+})
+
+
+vim.api.nvim_create_autocmd("BufWrite", {
+  pattern = { "*.dart" },
+  -- enable wrap mode for json files only
+  command = "lua vim.lsp.buf.code_action({apply = true, filter = function(action) return action.title == 'Organize Imports' end})",
+})
+
+vim.api.nvim_create_autocmd("BufWrite", {
+  pattern = { "*.dart" },
+  -- enable wrap mode for json files only
+  command = "lua if not require('dap').status() == '' then require('dap').session():request('hotReload') end",
+})

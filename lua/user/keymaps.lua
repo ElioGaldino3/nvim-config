@@ -22,6 +22,8 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<leader>b", ":HopWord<cr>", opts)
+keymap("n", "<leader>v", ":HopLineStart<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -71,11 +73,19 @@ keymap("n", "<S-k>", ":lua vim.lsp.buf.hover()<cr>", opts)
 -- DAP --
 keymap("n", "<F5>", ":FlutterRun<cr>", opts)
 keymap("n", "<leader><F4>", ":lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("v", "<M-k>", ":lua require("dapui").eval()<CR>", opts)
+keymap("v", "<M-k>", ":lua require('dapui').eval()<CR>", opts)
 
--- Terminal --
--- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- GIT
+
+vim.cmd [[
+function GitCommit() abort
+  let message = input('Mensagem do commit: ')
+  call system("git add .")
+  call system("git commit -m '" . message . "'")
+endfunction
+
+nnoremap <leader>gg :call GitCommit()<CR>
+nnoremap <leader>gp :! git push<CR>
+]]
+
+

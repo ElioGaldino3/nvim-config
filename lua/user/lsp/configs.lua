@@ -25,30 +25,22 @@ for _, server in pairs(servers) do
 end
 
 lspconfig.sumneko_lua.setup {}
-require("flutter-tools").setup {
-	debugger = { -- integrate with nvim dap + install dart code debugger
-    	enabled = true,
-    	run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
-    	register_configurations = function(paths)
-      	require("dap").configurations.dart = {
-			{
-				type = "dart",
-				request = "launch",
-				name = "Launch Flutter Program",
-				program = "${file}",
-				cwd = "${workspaceFolder}",
-				toolArgs = {"-d", "emulator-5554"}
-			}
-        }
-    end,
-  },
-  dev_log = {
-    enabled = false,
-    open_cmd = "flutterlog", -- command to use to open the log buffer
-  },
-  dev_tools = {
-    autostart = true, -- autostart devtools server if not detected
-    auto_open_browser = true, -- Automatically opens devtools in the browser
-  },
-}
+lspconfig.dartls.setup {}
 
+
+local dap = require("dap")
+dap.adapters.dart = {
+  type = "executable",
+  command = "flutter",
+  args = { "debug_adapter" }
+}
+dap.configurations.dart = {
+  {
+    type = "dart",
+    request = "launch",
+    name = "Launch Flutter Program",
+    program = "${file}",
+    cwd = "${workspaceFolder}",
+    toolArgs = { "-d", "linux" }
+  }
+}

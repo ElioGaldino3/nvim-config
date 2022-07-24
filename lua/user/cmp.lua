@@ -8,7 +8,7 @@ if not snip_status_ok then
   return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip.loaders.from_lua").load { paths = '/home/eliogaldino/.config/nvim/snippets/' }
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1
@@ -110,10 +110,10 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "path" },
+    { name = "nvim_lsp", group_index = 2 },
+    { name = "luasnip", group_index = 1 },
+    { name = "buffer", group_index = 3, max_item_count = 3 },
+    { name = "path", group_index = 4 }
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
