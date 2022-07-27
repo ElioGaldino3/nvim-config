@@ -2,7 +2,7 @@ vim.cmd[[colorscheme ayu]]
 
 require('hop').setup()
 
-require('transparent').setup({enable=true})
+--require('transparent').setup({enable=true})
 
 
 require('ayu').setup({

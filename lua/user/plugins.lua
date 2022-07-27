@@ -91,7 +91,11 @@ return packer.startup(function(use)
 
     -- Navigation
     use({ 'phaazon/hop.nvim', })
+  
+    use({ 'terrortylor/nvim-comment' })
 
+    use({ '/mnt/BackupSSD/Projetos/Estudos/Neovim/fluter-lua.nvim'})
+  
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

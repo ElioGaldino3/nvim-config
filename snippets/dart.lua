@@ -24,6 +24,12 @@ function CamelCase(str)
   end)
 end
 
+local class = s('class', { dn(1, function()
+  classePrincipal = FilenameToPascalCase(vim.fn.expand("%:t"))
+
+  return sn(nil, { t({ 'class ' .. classePrincipal .. ' {', '  ' }), i(1, ''), t({ '', '}' }) })
+end, { 1 }) })
+
 local statefulWidget = s(
   "stf", {
   t({ "import 'package:flutter/material.dart';", '', '' }),
@@ -97,6 +103,7 @@ local modularRoute = s('mroute', {t("ChildRoute('"), i(0,'/'),t("',(_, _args) =>
 local modularModuleRoute = s('mmroute', {t("ChildRoute('"), i(0,'/'),t("', "),i(1, 'module'),t(")")})
 
 local snippets = {
+  class,
   statefulWidget,
   statelessWidget,
   formKey,

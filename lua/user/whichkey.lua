@@ -1,6 +1,4 @@
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-  return
+local status_ok, which_key = pcall(require, "which-key")if not status_ok then  return
 end
 
 local setup = {
@@ -164,10 +162,16 @@ local mappings = {
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
 
-  F = {
+  m = {
     name = "Flutter",
-      r = { ":lua if not require('dap').status() == '' then require('dap').session():request('hotRestart') end<CR>", "Restart" },
+      m = { ":lua require('dap').session():request('hotRestart')<CR>", "Restart" },
+      d = { ":lua require('dap').set_exception_breakpoints({})<CR>", "Set no exception to break"},
       q = { ":FlutterQuit<CR>", "Quit" },
+  },
+
+  r = {
+    name = "Snippets DO ELHÃO",
+    q = { ":lua require('flelio.commands').createImplementationClass()<cr>", "CLASSE DE IMPLEMENTAÇÃO" },
   }
 }
 

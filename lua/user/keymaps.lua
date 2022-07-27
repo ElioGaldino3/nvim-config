@@ -58,10 +58,12 @@ keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
+require('nvim_comment').setup()
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "/", ":'<,'>CommentToggle<cr>", opts)
 
 -- LSP --
 keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
@@ -69,11 +71,19 @@ keymap("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts)
 keymap("n", "<leaded>a", ":lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "<leader>C", ":lua vim.diagnostic.open_float()<cr>", opts)
 keymap("n", "<S-k>", ":lua vim.lsp.buf.hover()<cr>", opts)
+keymap("n", ".", ":lua vim.diagnostic.goto_next()<CR>:lua vim.lsp.buf.code_action()<cr>", opts)
+keymap("n", ",", ":lua vim.diagnostic.goto_next()<CR>:lua vim.lsp.buf.code_action({apply = true, filter = function(action) return string.find(action.title, 'Import library') and string.find(action.title, 'package')  end})<cr>", opts)
+keymap("n", ";", ":lua vim.diagnostic.goto_next()<CR>:lua vim.lsp.buf.code_action({apply = true, filter = function(action) return string.find(action.title, ' missing override') end})<cr>", opts)
+
 
 -- DAP --
-keymap("n", "<F5>", ":FlutterRun<cr>", opts)
-keymap("n", "<leader><F4>", ":lua require'dap'.toggle_breakpoint()<cr>", opts)
+keymap("n", "<F5>", ":lua require('dap').continue()<cr>", opts)
+keymap("n", "<F4>", ":lua require'dap'.toggle_breakpoint()<cr>", opts)
+keymap("n", "<F6>", ":lua require'dapui'.toggle()<cr>", opts)
 keymap("v", "<M-k>", ":lua require('dapui').eval()<CR>", opts)
+keymap("n", "<F8>", "<C-w>|", opts)
+keymap("n", "<F9>", "<C-w>=", opts)
+keymap("n", "<F3>", ":lua require('dap').session():request('hotReload')<cr>", opts)
 
 -- GIT
 
