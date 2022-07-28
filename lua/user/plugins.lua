@@ -58,6 +58,7 @@ return packer.startup(function(use)
 
 	-- Colorschemes
     use("Shatur/neovim-ayu")
+    use('navarasu/onedark.nvim')
     use({ 'xiyaowong/nvim-transparent', })
 
 	-- cmp plugins
@@ -81,6 +82,7 @@ return packer.startup(function(use)
 
 	-- Treesitter
 	use({"nvim-treesitter/nvim-treesitter",})
+    use({'nvim-treesitter/playground'})
 
 	-- Git
 	use({ "lewis6991/gitsigns.nvim", })
