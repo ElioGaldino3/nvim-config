@@ -102,6 +102,8 @@ local modularRoute = s('mroute', {t("ChildRoute('"), i(0,'/'),t("',(_, _args) =>
 
 local modularModuleRoute = s('mmroute', {t("ChildRoute('"), i(0,'/'),t("', "),i(1, 'module'),t(")")})
 
+local utilWidgets = s('uw', {t("import 'package:"), i(0, ''), t("/app/shared/utils/widget_extensions.dart';")})
+
 local snippets = {
   class,
   statefulWidget,
@@ -113,6 +115,7 @@ local snippets = {
   modularBind,
   modularRoute,
   modularModuleRoute,
+  utilWidgets,
 }
 
 return snippets
